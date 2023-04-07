@@ -20,28 +20,32 @@ class _Add_tenantState extends State<Add_tenant> {
   var _mobile_NOController = TextEditingController();
   var emailController = TextEditingController();
   bool isTrue = false;
+  var _bankName = TextEditingController();
+  var _bankAccountNo = TextEditingController();
+  var _bankAddress = TextEditingController();
+  var _bankIFSCODE = TextEditingController();
 
   void addFunctions() async {
     if (formkey.currentState!.validate()) {
       //validate the
       try {
-        Tenant tenant = Tenant(
-          flat_no: int.parse(_flat_NumberController.text),
-          name: _nameController.text,
-          door_no: _houseDoorController.text,
-          mobileno: _mobile_NOController.text,
-          email: emailController.text,
-        );
         // Tenant tenant = Tenant(
-        //     flat_no: int.parse(_flat_NumberController.text),
-        //     name: _nameController.text,
-        //     door_no: _houseDoorController.text,
-        //     mobileno: _mobile_NOController.text,
-        //     email: emailController.text,
-        //     bankName: _nameController.text,
-        //     BAddress: _nameController.text,
-        //     bAcountNo: _nameController.text,
-        //     IFSCODE: _nameController.text);
+        //   flat_no: int.parse(_flat_NumberController.text),
+        //   name: _nameController.text,
+        //   door_no: _houseDoorController.text,
+        //   mobileno: _mobile_NOController.text,
+        //   email: emailController.text,
+        // );
+        Tenant tenant = Tenant(
+            flat_no: int.parse(_flat_NumberController.text),
+            name: _nameController.text,
+            door_no: _houseDoorController.text,
+            mobileno: _mobile_NOController.text,
+            email: emailController.text,
+            bankName: _bankName.text,
+            BAddress: _bankAddress.text,
+            bAcountNo: _bankAccountNo.text,
+            IFSCODE: _bankIFSCODE.text);
         await widget.myDataBase.insertFlatOwnerlist(tenant);
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -286,50 +290,140 @@ class _Add_tenantState extends State<Add_tenant> {
                           height: 18,
                         ),
                         //optional
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Optional",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Icon(
-                                  Icons.offline_bolt,
-                                  color: isTrue ? Colors.green : Colors.red,
-                                )
-                              ],
-                            ),
-                            Switch(
-                                value: isTrue,
-                                onChanged: (newVlaue) {
-                                  setState(() {
-                                    isTrue = newVlaue;
-                                  });
-                                }),
-                            /*
-                                Row(
-                                  children: [
-                                    Text(
-                                      "True",
-                                      style: TextStyle(
-                                          color: Colors.lightBlue,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Icon(
-                                      Icons.offline_bolt,
-                                      color: Colors.red,
-                                    )
-                                  ],
-                                ),
-                                */
-                          ],
+                        Container(
+                          height: 20,
+                          width: 50,
+                          color: Colors.blue,
+                          child: Text("Bank"),
                         ),
-
+                        TextFormField(
+                          controller: _bankName,
+                          validator: (Value) =>
+                              Value == "" ? "_bankName" : null,
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.email,
+                              color: Colors.black,
+                            ),
+                            hintText: "_bankName.....",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            disabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 14, vertical: 6),
+                            fillColor: Colors.white,
+                            filled: true,
+                          ),
+                        ),
+                        TextFormField(
+                          controller: _bankAddress,
+                          validator: (Value) =>
+                              Value == "" ? "_bankAddress" : null,
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.email,
+                              color: Colors.black,
+                            ),
+                            hintText: "_bankAddress.....",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            disabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 14, vertical: 6),
+                            fillColor: Colors.white,
+                            filled: true,
+                          ),
+                        ),
+                        TextFormField(
+                          controller: _bankAccountNo,
+                          validator: (Value) =>
+                              Value == "" ? "_bankAccountNo" : null,
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.email,
+                              color: Colors.black,
+                            ),
+                            hintText: "_bankAccountNo.....",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            disabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 14, vertical: 6),
+                            fillColor: Colors.white,
+                            filled: true,
+                          ),
+                        ),
+                        TextFormField(
+                          controller: _bankIFSCODE,
+                          validator: (Value) =>
+                              Value == "" ? "_bankIFSCODE" : null,
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(
+                              Icons.email,
+                              color: Colors.black,
+                            ),
+                            hintText: "_bankIFSCODE.....",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            disabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white60)),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 14, vertical: 6),
+                            fillColor: Colors.white,
+                            filled: true,
+                          ),
+                        ),
                         const SizedBox(
                           height: 18,
                         ),

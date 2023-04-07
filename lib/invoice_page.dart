@@ -72,7 +72,7 @@ class _InvoicePageState extends State<InvoicePage> {
 //
 //==========================-------------
   List<BillReport> billReports = [];
-
+  double? GrandTotal;
   final MyDataBase _myDataBase = MyDataBase();
   @override
   //totest
@@ -107,8 +107,8 @@ class _InvoicePageState extends State<InvoicePage> {
         billReports = updatedData;
       });
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Try Again: \n$e  :bug!!')));
+      // ScaffoldMessenger.of(context)
+      //     .showSnackBar(SnackBar(content: Text('Try Again: \n$e  :bug!!')));
     }
   }
 //==========================-------------
@@ -154,10 +154,10 @@ class _InvoicePageState extends State<InvoicePage> {
   }
 
   void initState() {
+    super.initState();
     setState(() {
       getDataFromDb();
     });
-    super.initState();
   }
 
   @override
@@ -172,13 +172,6 @@ class _InvoicePageState extends State<InvoicePage> {
           title: Row(
         children: [
           Text('Invoice Form'),
-          IconButton(
-              onPressed: () {
-                setState(() {
-                  _refreshData();
-                });
-              },
-              icon: Icon(Icons.refresh))
         ],
       )),
       body: SingleChildScrollView(
@@ -580,7 +573,7 @@ class _InvoicePageState extends State<InvoicePage> {
                           fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(
-                      "Bank Name:${widget.CUSTOMER?.bankName} \nBank Address:${widget.CUSTOMER?.BAddress} \nA/c no:${widget.CUSTOMER?.bAcountNo} \nIFSc:${widget.transactions?.bifsc} \n",
+                      "Bank Name:${widget.CUSTOMER?.bankName} \nBank Address:${widget.CUSTOMER?.BAddress} \nA/c no:${widget.CUSTOMER?.bAcountNo} \nIFSc:${widget.CUSTOMER?.IFSCODE} \n",
                       style: TextStyle(
                           fontSize: 18,
                           fontFamily: 'OpenSans',
@@ -599,6 +592,15 @@ class _InvoicePageState extends State<InvoicePage> {
             )
           ]),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.refresh),
+        onPressed: () {
+          // Navigate to Add Page CustomerForm
+          setState(() {
+            _refreshData();
+          });
+        },
       ),
     );
   }
