@@ -154,6 +154,13 @@ class MyDataBase {
     return rowsInserted;
   }
 
+  Future<int> countBillreportlist() async {
+    List<Map<String, Object?>> result =
+        await _database.rawQuery('SELECT COUNT(*) FROM $billReportTable');
+    int count = Sqflite.firstIntValue(result) ?? 0;
+    return count;
+  }
+
   Future<void> insertBillReport(double rentalBill, double otherBill,
       double totalBill, int flatId, Set<int> set) async {
     final db = await _database;

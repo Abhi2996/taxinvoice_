@@ -431,47 +431,47 @@ class _HomeState extends State<Home> {
                                     ),
                                   ),
                                 ),
-                                Material(
-                                  color: Color.fromARGB(255, 2, 161, 247),
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: InkWell(
-                                    onTap: () {
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //       builder: (context) =>
-                                      //           BillReportList(
-                                      //             tenant: tenant[index],
-                                      //           )),
-                                      // );
+                                // Material(
+                                //   color: Color.fromARGB(255, 2, 161, 247),
+                                //   borderRadius: BorderRadius.circular(20),
+                                //   child: InkWell(
+                                //     onTap: () {
+                                //       // Navigator.push(
+                                //       //   context,
+                                //       //   MaterialPageRoute(
+                                //       //       builder: (context) =>
+                                //       //           BillReportList(
+                                //       //             tenant: tenant[index],
+                                //       //           )),
+                                //       // );
 
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                TransactionDetailForm(
-                                                  myDataBase: _myDataBase,
-                                                  CUSTOMER: tenant[index],
-                                                )),
-                                      );
-                                    },
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: const Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 6,
-                                        horizontal: 10,
-                                      ),
-                                      child: Text(
-                                        "Bank",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                //       Navigator.push(
+                                //         context,
+                                //         MaterialPageRoute(
+                                //             builder: (context) =>
+                                //                 TransactionDetailForm(
+                                //                   myDataBase: _myDataBase,
+                                //                   CUSTOMER: tenant[index],
+                                //                 )),
+                                //       );
+                                //     },
+                                //     borderRadius: BorderRadius.circular(20),
+                                //     child: const Padding(
+                                //       padding: EdgeInsets.symmetric(
+                                //         vertical: 6,
+                                //         horizontal: 10,
+                                //       ),
+                                //       child: Text(
+                                //         "Bank",
+                                //         style: TextStyle(
+                                //           color: Colors.white,
+                                //           fontSize: 11,
+                                //           fontWeight: FontWeight.bold,
+                                //         ),
+                                //       ),
+                                //     ),
+                                //   ),
+                                // ),
                                 // Material(
                                 //   color: Color.fromARGB(255, 3, 45, 255),
                                 //   borderRadius: BorderRadius.circular(20),
