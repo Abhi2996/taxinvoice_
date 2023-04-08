@@ -59,6 +59,7 @@ class BillReport {
   final double? rentalBill; //item QTY
   final double? otherBill; //Price
   final double? totalBill; // Qty*price
+  final double? tax;
   final int? flatId; //customer Id
 
   BillReport({
@@ -67,6 +68,7 @@ class BillReport {
     this.rentalBill,
     this.otherBill,
     this.totalBill,
+    this.tax,
     this.flatId,
   });
 
@@ -77,6 +79,7 @@ class BillReport {
         'rentalBill': rentalBill,
         'otherBill': otherBill,
         'totalBill': totalBill,
+        'tax': tax,
         'flat_id': flatId,
       };
 
@@ -87,6 +90,7 @@ class BillReport {
         rentalBill: map["rentalBill"],
         otherBill: map["otherBill"],
         totalBill: map["totalBill"],
+        tax: map['tax'],
         flatId: map["flat_id"],
       );
 }

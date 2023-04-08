@@ -32,6 +32,7 @@ class MyDataBase {
   final String billReportColumnRentalBill = 'rentalBill';
   final String billReportColumnOtherBill = 'otherBill';
   final String billReportColumnTotalBill = 'totalBill';
+  final String billReportColumnTax = 'tax';
   static final String billReportColumnFlatId = 'flat_id';
   final String billReportForeignKey =
       'FOREIGN KEY ($billReportColumnFlatId) REFERENCES $tableName ($columnId) ON DELETE CASCADE';
@@ -51,6 +52,7 @@ class MyDataBase {
           '$billReportColumnRentalBill REAL,'
           '$billReportColumnOtherBill REAL,'
           '$billReportColumnTotalBill REAL,'
+          '$billReportColumnTax REAL,'
           '$billReportColumnFlatId INTEGER,'
           '$billReportForeignKey'
           ')');

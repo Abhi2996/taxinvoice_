@@ -349,6 +349,8 @@ class _InvoicePageState extends State<InvoicePage> {
                   child: Row(
                     children: [
                       DataTable(
+                        dataRowHeight: 30, // Set the height of each row to 30
+
                         columns: [
                           DataColumn(
                             label: Text("Item Id",
@@ -363,6 +365,10 @@ class _InvoicePageState extends State<InvoicePage> {
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                           ),
                           DataColumn(
+                            label: Text("Tax",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                          ),
+                          DataColumn(
                             label: Text("Total",
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                           )
@@ -373,6 +379,7 @@ class _InvoicePageState extends State<InvoicePage> {
                                     DataCell(Text(e.id.toString())),
                                     DataCell(Text(e.rentalBill.toString())),
                                     DataCell(Text(e.otherBill.toString())),
+                                    DataCell(Text('${e.tax.toString()}%')),
                                     DataCell(Text(e.totalBill.toString())),
                                   ],
                                 ))
@@ -455,7 +462,7 @@ class _InvoicePageState extends State<InvoicePage> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text('Download This!!?'),
+                    title: Text('Download This?'),
                     content:
                         Text('Are you sure you want to Download this Pdf?'),
                     actions: [

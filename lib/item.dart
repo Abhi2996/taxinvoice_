@@ -25,6 +25,7 @@ class _ItemTableState extends State<ItemTable> {
   TextEditingController _itemNameController = TextEditingController();
   TextEditingController _quantityController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
+  TextEditingController _TaxtController = TextEditingController();
   TextEditingController _customerID = TextEditingController();
   TextEditingController _customerName = TextEditingController();
 
@@ -51,9 +52,9 @@ class _ItemTableState extends State<ItemTable> {
   void calculateTotalBill() {
     final QTY = double.tryParse(_quantityController.text) ?? 0.0;
     final Price = double.tryParse(_priceController.text) ?? 0.0;
-
+    final Tax = double.tryParse(_TaxtController.text) ?? 0.0;
     setState(() {
-      totalAmount_Bill = QTY * Price;
+      totalAmount_Bill = QTY * Price * (1 + Tax);
     });
   }
 
@@ -207,7 +208,7 @@ class _ItemTableState extends State<ItemTable> {
                             borderRadius: BorderRadius.circular(10))),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 16,
                   ),
                   TextFormField(
                     controller: _customerID,
@@ -221,7 +222,7 @@ class _ItemTableState extends State<ItemTable> {
                             borderRadius: BorderRadius.circular(10))),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 16,
                   ),
                   TextFormField(
                     controller: _itemID,
@@ -235,7 +236,7 @@ class _ItemTableState extends State<ItemTable> {
                             borderRadius: BorderRadius.circular(10))),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 16,
                   ),
                   TextFormField(
                     controller: _itemNameController,
@@ -249,7 +250,7 @@ class _ItemTableState extends State<ItemTable> {
                             borderRadius: BorderRadius.circular(10))),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 16,
                   ),
                   TextFormField(
                     keyboardType: TextInputType.number,
@@ -264,7 +265,7 @@ class _ItemTableState extends State<ItemTable> {
                             borderRadius: BorderRadius.circular(10))),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 16,
                   ),
                   TextFormField(
                     keyboardType: TextInputType.number,
@@ -275,6 +276,22 @@ class _ItemTableState extends State<ItemTable> {
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(color: Colors.black)),
                         hintText: 'Enter item price ',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  //Taxt
+                  TextFormField(
+                    keyboardType: TextInputType.number,
+                    controller: _TaxtController,
+                    decoration: InputDecoration(
+                        labelText: 'Tax',
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: Colors.black)),
+                        hintText: 'Enter TAX ',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
                   ),
@@ -292,6 +309,7 @@ class _ItemTableState extends State<ItemTable> {
                                 double.tryParse(_quantityController.text),
                             otherBill: double.tryParse(_priceController.text),
                             totalBill: totalAmount_Bill,
+                            tax: double.tryParse(_TaxtController.text),
                             flatId: int.parse(_customerID.text));
                         await widget.myDataBase.insertReportlist(billReport);
                         //
@@ -313,13 +331,13 @@ class _ItemTableState extends State<ItemTable> {
           SizedBox(
             width: 4,
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => DisplayItem()));
-            },
-            child: Text("see data inserted "),
-          ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     Navigator.push(context,
+          //         MaterialPageRoute(builder: (context) => DisplayItem()));
+          //   },
+          //   child: Text("see data inserted "),
+          // ),
         ]));
   }
 }
