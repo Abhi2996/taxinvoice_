@@ -380,7 +380,8 @@ class _InvoicePageState extends State<InvoicePage> {
                                     DataCell(Text(e.rentalBill.toString())),
                                     DataCell(Text(e.otherBill.toString())),
                                     DataCell(Text('${e.tax.toString()}%')),
-                                    DataCell(Text(e.totalBill.toString())),
+                                    DataCell(Text(
+                                        (e.totalBill?.toInt()).toString())),
                                   ],
                                 ))
                             .toList(),
@@ -398,7 +399,7 @@ class _InvoicePageState extends State<InvoicePage> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          "GRAND TOTAL:$GrandTotal",
+                          "GRAND TOTAL:${GrandTotal.toInt()}",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,

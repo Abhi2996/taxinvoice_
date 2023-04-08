@@ -170,13 +170,14 @@ class _HomeState extends State<Home> {
                         margin: EdgeInsets.all(10),
                         width: 200,
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           controller: _searcher,
                           validator: (Value) =>
                               Value == "" ? "Customer ID" : null,
                           decoration: InputDecoration(
                             prefixIcon:
                                 const Icon(Icons.search, color: Colors.black),
-                            hintText: "Search Customer ID.....",
+                            hintText: "Search Custo..ID.....",
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(0),
                               borderSide:

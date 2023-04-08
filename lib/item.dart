@@ -51,10 +51,10 @@ class _ItemTableState extends State<ItemTable> {
 
   void calculateTotalBill() {
     final QTY = double.tryParse(_quantityController.text) ?? 0.0;
-    final Price = double.tryParse(_priceController.text) ?? 0.0;
+    var Price = double.tryParse(_priceController.text) ?? 0.0;
     final Tax = double.tryParse(_TaxtController.text) ?? 0.0;
     setState(() {
-      totalAmount_Bill = QTY * Price * (1 + Tax);
+      totalAmount_Bill = (Price * QTY) * (1 + (Tax / 100));
     });
   }
 
